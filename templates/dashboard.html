@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Dashboard Caja</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+<h1 class="titulo">CONTROL DE CAJA</h1>
+
+<div class="grid">
+
+    <div class="card">
+
+        <h2>Responsable</h2>
+
+        <div class="fila">
+            <span>Operador</span>
+            <strong>{{ operador }}</strong>
+        </div>
+
+        <div class="fila">
+            <span>Fecha</span>
+            <strong>{{ fecha|date:"d/m/Y" }}</strong>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Ventas</h2>
+
+        <div class="fila">
+            <span>Mercado Libre</span>
+            <strong>$ {{ mercado_libre }}</strong>
+        </div>
+
+        <div class="fila">
+            <span>Distribución</span>
+            <strong>$ {{ distribucion }}</strong>
+        </div>
+
+        <div class="fila">
+            <span>Total Local</span>
+            <strong>$ {{ total_local }}</strong>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Cierre</h2>
+
+        <div class="fila">
+            <span>Local Efectivo</span>
+            <strong>$ {{ local_efectivo }}</strong>
+        </div>
+
+        <div class="fila">
+            <span>Saldo Final</span>
+            <strong>$ {{ saldo_final }}</strong>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
