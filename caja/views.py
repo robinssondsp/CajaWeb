@@ -103,3 +103,44 @@ def asistencias(request):
         request,
         "asistencias.html"
     )
+
+def asistencias(request):
+
+    archivo = Path("data/Caja.xlsx")
+
+    wb = load_workbook(
+        archivo,
+        data_only=True
+    )
+
+    hoja = wb["Ast. Caja"]
+
+    registros = []
+
+    fila = 2
+
+    while hoja[f"A{fila}"].value:
+
+        registros.append({
+
+            "fecha": hoja[f"A{fila}"].value,
+
+            "responsable": hoja[f"B{fila}"].value,
+
+            "dia": hoja[f"C{fila}"].value,
+
+        })
+
+        fila += 1
+
+    contexto = {
+
+        "registros": registros
+
+    }
+
+    return render(
+        request,
+        "asistencias.html",
+        contexto
+    )

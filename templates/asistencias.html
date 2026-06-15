@@ -10,6 +10,36 @@
 
     <h1>ASISTENCIAS DE CAJA</h1>
 
+    <table border="1">
+
+        <tr>
+            <th>Fecha</th>
+            <th>Responsable</th>
+            <th>Día</th>
+        </tr>
+
+        {% for fila in registros %}
+
+        <tr>
+
+            <td>
+                {{ fila.fecha|date:"d/m/Y" }}
+            </td>
+
+            <td>
+                {{ fila.responsable }}
+            </td>
+
+            <td>
+                {{ fila.dia }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
 </body>
 
 </html>
