@@ -5,8 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <title>Dashboard Caja</title>
+    <title>Control de Caja</title>
 
     <link rel="stylesheet"
           href="{% static 'css/styles.css' %}">
@@ -14,64 +13,122 @@
 
 <body>
 
-<h1 class="titulo">CONTROL DE CAJA</h1>
+    <h1 class="titulo">CONTROL DE CAJA</h1>
 
-<div class="grid">
+    <div class="grid">
 
-    <div class="card">
+        <div class="card">
+            <h2>Responsable</h2>
 
-        <h2>Responsable</h2>
+            <div class="fila">
+                <span>Operador</span>
+                <strong>{{ operador }}</strong>
+            </div>
 
-        <div class="fila">
-            <span>Operador</span>
-            <strong>{{ operador }}</strong>
+            <div class="fila">
+                <span>Fecha</span>
+                <strong>{{ fecha|date:"d/m/Y" }}</strong>
+            </div>
         </div>
 
-        <div class="fila">
-            <span>Fecha</span>
-            <strong>{{ fecha|date:"d/m/Y" }}</strong>
+        <div class="card">
+            <h2>Caja UYU</h2>
+
+            <div class="fila">
+                <span>Saldo Inicial</span>
+                <strong>{{ saldo_inicial_uyu }}</strong>
+            </div>
+
+            <div class="fila">
+                <span>Movimientos</span>
+                <strong>{{ movimientos_uyu }}</strong>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Caja USD</h2>
+
+            <div class="fila">
+                <span>Saldo Inicial</span>
+                <strong>{{ saldo_inicial_usd }}</strong>
+            </div>
+
+            <div class="fila">
+                <span>Movimientos</span>
+                <strong>{{ movimientos_usd }}</strong>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Ventas</h2>
+
+            <div class="fila">
+                <span>Mercado Libre</span>
+                <strong>{{ mercado_libre }}</strong>
+            </div>
+
+            <div class="fila">
+                <span>Distribución</span>
+                <strong>{{ distribucion }}</strong>
+            </div>
+
+            <div class="fila">
+                <span>Total Local</span>
+                <strong>{{ total_local }}</strong>
+            </div>
+
+            <div class="fila">
+                <span>Local Efectivo</span>
+                <strong>{{ local_efectivo }}</strong>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Cierre UYU</h2>
+
+            <div class="fila">
+                <span>Saldo Final</span>
+                <strong>{{ saldo_final_uyu }}</strong>
+            </div>
+
+            <div class="fila">
+                <span>Sobrante</span>
+                <strong>{{ sobrante_uyu }}</strong>
+            </div>
+
+            <div class="fila">
+                <span>Faltante</span>
+                <strong>{{ faltante_uyu }}</strong>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Cierre USD</h2>
+
+            <div class="fila">
+                <span>Saldo Final</span>
+                <strong>{{ saldo_final_usd }}</strong>
+            </div>
+
+            <div class="fila">
+                <span>Sobrante</span>
+                <strong>{{ sobrante_usd }}</strong>
+            </div>
+
+            <div class="fila">
+                <span>Faltante</span>
+                <strong>{{ faltante_usd }}</strong>
+            </div>
+        </div>
+
+        <div class="card observacion">
+            <h2>Observación</h2>
+
+            <p>{{ observacion|default:"Sin observaciones" }}</p>
         </div>
 
     </div>
-
-    <div class="card">
-
-        <h2>Ventas</h2>
-
-        <div class="fila">
-            <span>Mercado Libre</span>
-            <strong>$ {{ mercado_libre }}</strong>
-        </div>
-
-        <div class="fila">
-            <span>Distribución</span>
-            <strong>$ {{ distribucion }}</strong>
-        </div>
-
-        <div class="fila">
-            <span>Total Local</span>
-            <strong>$ {{ total_local }}</strong>
-        </div>
-
-    </div>
-
-    <div class="card">
-
-        <h2>Cierre</h2>
-
-        <div class="fila">
-            <span>Local Efectivo</span>
-            <strong>$ {{ local_efectivo }}</strong>
-        </div>
-
-        <div class="fila">
-            <span>Saldo Final</span>
-            <strong>$ {{ saldo_final }}</strong>
-        </div>
-
-    </div>
-
-</div>
 
 </body>
+
 </html>
