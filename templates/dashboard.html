@@ -14,16 +14,46 @@
 <body>
 
     <h1 class="titulo">CONTROL DE CAJA</h1>
-    <div class="kpi-container">
+
+    <!-- KPI PRINCIPAL -->
+
+    <div class="kpi-hero">
+
+        <div class="hero-titulo">
+            TOTAL DEL DÍA
+        </div>
+
+        <div class="hero-valor">
+            {{ total_dia }}
+        </div>
+
+    </div>
+
+
+<!-- KPI SECUNDARIOS -->
+
+<div class="kpi-container">
 
     <div class="kpi-card">
 
         <div class="kpi-titulo">
-            SALDO FINAL
+            MERCADO LIBRE
         </div>
 
         <div class="kpi-valor">
-            $ {{ saldo_final_uyu }}
+            {{ mercado_libre }}
+        </div>
+
+    </div>
+
+    <div class="kpi-card">
+
+        <div class="kpi-titulo">
+            DISTRIBUCIÓN
+        </div>
+
+        <div class="kpi-valor">
+            {{ distribucion }}
         </div>
 
     </div>
@@ -35,7 +65,7 @@
         </div>
 
         <div class="kpi-valor">
-            $ {{ total_local }}
+            {{ total_local }}
         </div>
 
     </div>
@@ -43,26 +73,16 @@
     <div class="kpi-card">
 
         <div class="kpi-titulo">
-            MERCADO LIBRE
+            LOCAL EFECTIVO
         </div>
 
         <div class="kpi-valor">
-            $ {{ mercado_libre }}
+            {{ local_efectivo }}
         </div>
 
     </div>
 
-    <div class="kpi-card">
-
-        <div class="kpi-titulo">
-            EFECTIVO
-        </div>
-
-        <div class="kpi-valor">
-            $ {{ local_efectivo }}
-        </div>
-
-    </div>
+</div>
 
 </div>
 
@@ -90,11 +110,6 @@
                 <span>Saldo Inicial</span>
                 <strong>{{ saldo_inicial_uyu }}</strong>
             </div>
-
-            <div class="fila">
-                <span>Movimientos</span>
-                <strong>{{ movimientos_uyu }}</strong>
-            </div>
         </div>
 
         <div class="card">
@@ -104,37 +119,7 @@
                 <span>Saldo Inicial</span>
                 <strong>{{ saldo_inicial_usd }}</strong>
             </div>
-
-            <div class="fila">
-                <span>Movimientos</span>
-                <strong>{{ movimientos_usd }}</strong>
-            </div>
         </div>
-
-        <div class="card">
-            <h2>Ventas</h2>
-
-            <div class="fila">
-                <span>Mercado Libre</span>
-                <strong>{{ mercado_libre }}</strong>
-            </div>
-
-            <div class="fila">
-                <span>Distribución</span>
-                <strong>{{ distribucion }}</strong>
-            </div>
-
-            <div class="fila">
-                <span>Total Local</span>
-                <strong>{{ total_local }}</strong>
-            </div>
-
-            <div class="fila">
-                <span>Local Efectivo</span>
-                <strong>{{ local_efectivo }}</strong>
-            </div>
-        </div>
-
         <div class="card">
             <h2>Cierre UYU</h2>
 

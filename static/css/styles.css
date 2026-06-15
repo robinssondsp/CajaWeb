@@ -63,28 +63,6 @@ body {
     min-height: 120px;
 }
 
-.kpi-principal {
-
-    background: linear-gradient(
-        135deg,
-        #0f172a,
-        #1e293b
-    );
-
-    color: white;
-
-    border-radius: 20px;
-
-    padding: 30px;
-
-    margin-bottom: 30px;
-
-    text-align: center;
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.15);
-}
-
 .kpi-titulo {
 
     font-size: 1rem;
@@ -150,6 +128,49 @@ body {
 .kpi-valor {
 
     font-size: 2rem;
+
+    font-weight: bold;
+    }
+/* KPI HERO */
+
+.kpi-hero {
+
+    width: 100%;
+
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #1e293b
+    );
+
+    color: white;
+
+    border-radius: 20px;
+
+    padding: 40px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.15);
+}
+
+.hero-titulo {
+
+    font-size: 1.2rem;
+
+    letter-spacing: 3px;
+
+    opacity: .8;
+
+    margin-bottom: 15px;
+}
+
+.hero-valor {
+
+    font-size: 4rem;
 
     font-weight: bold;
 }
