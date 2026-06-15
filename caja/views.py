@@ -12,8 +12,6 @@ def moneda(valor):
 
         valor = float(valor)
 
-        valor = valor / 100
-
         texto = f"{valor:,.2f}"
 
         texto = texto.replace(",", "X")
@@ -25,6 +23,27 @@ def moneda(valor):
     except:
 
         return "$ 0,00"
+
+def moneda_usd(valor):
+
+    if valor is None:
+        return "USD 0,00"
+
+    try:
+
+        valor = float(valor)
+
+        texto = f"{valor:,.2f}"
+
+        texto = texto.replace(",", "X")
+        texto = texto.replace(".", ",")
+        texto = texto.replace("X", ".")
+
+        return f"USD {texto}"
+
+    except:
+
+        return "USD 0,00"
 
 
 def dashboard(request):
@@ -56,21 +75,21 @@ def dashboard(request):
         "saldo_inicial_uyu": moneda(hoja["B4"].value),
         "movimientos_uyu": moneda(hoja["B5"].value),
 
-        # Caja USD
-        "saldo_inicial_usd": hoja["B6"].value,
-        "movimientos_usd": hoja["B7"].value,
-
         # Cierre UYU
         "sobrante_uyu": moneda(hoja["B14"].value),
         "faltante_uyu": moneda(hoja["B15"].value),
 
+        "saldo_inicial_usd": moneda_usd(hoja["B6"].value),
+        "movimientos_usd": moneda_usd(hoja["B7"].value),
+
         # Cierre USD
-        "saldo_final_usd": hoja["B16"].value,
-        "sobrante_usd": hoja["B17"].value or 0,
-        "faltante_usd": hoja["B18"].value or 0,
+        "saldo_final_usd": moneda_usd(hoja["B16"].value),
+        "sobrante_usd": moneda_usd(hoja["B17"].value),
+        "faltante_usd": moneda_usd(hoja["B18"].value),
 
         # Observación
         "observacion": hoja["B19"].value,
+    
     }
 
     return render(
