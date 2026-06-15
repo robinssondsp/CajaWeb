@@ -15,13 +15,11 @@
 
     <div class="logo-container">
 
-        <img
-            src="{% static 'images/Logo.png' %}"
-            alt="Logo CajaWeb"
-            class="logo"
-        >
-
-    </button>
+    <img
+        src="{% static 'images/Logo24g.png' %}"
+        alt="Logo"
+        class="logo"
+    >
 
 </div>
 
@@ -29,18 +27,34 @@
 
     <!-- KPI PRINCIPAL -->
 
-    <div class="kpi-hero">
+    <div class="card">
+        <h2>RESPONSABLE</h2>
+    
+    <div class="responsable-premium">
 
-        <div class="hero-titulo">
-            TOTAL DEL DÍA
-        </div>
+    <div class="responsable-nombre">
 
-        <div class="hero-valor">
-            {{ total_dia }}
-        </div>
+        {{ operador }}
 
     </div>
 
+    <div class="responsable-fecha">
+
+        {{ fecha|date:"d/m/Y" }}
+
+    </div>
+</div>
+    <div class="kpi-hero">
+        
+      <div class="hero-titulo">
+            TOTAL DEL DÍA
+        </div>
+            
+        <div class="hero-valor">
+            {{ total_dia }}
+        </div>
+        
+    </div>
 
 <!-- KPI SECUNDARIOS -->
 
@@ -110,20 +124,6 @@
 
 </div>
     <div class="grid">
-
-        <div class="card">
-            <h2>Responsable</h2>
-
-            <div class="fila">
-                <span>Operador</span>
-                <strong>{{ operador }}</strong>
-            </div>
-
-            <div class="fila">
-                <span>Fecha</span>
-                <strong>{{ fecha|date:"d/m/Y" }}</strong>
-            </div>
-        </div>
 
         <div class="card">
             <h2>Caja UYU</h2>
