@@ -97,3 +97,9 @@ def dashboard(request):
         "dashboard.html",
         contexto
     )
+def asistencias(request):
+
+    return render(
+        request,
+        "asistencias.html"
+    )
