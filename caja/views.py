@@ -2,6 +2,28 @@ from django.shortcuts import render
 from openpyxl import load_workbook
 from pathlib import Path
 
+def moneda(valor):
+
+    if valor is None:
+        return "$ 0,00"
+
+    try:
+
+        valor = float(valor)
+
+        valor = valor / 100
+
+        texto = f"{valor:,.2f}"
+
+        texto = texto.replace(",", "X")
+        texto = texto.replace(".", ",")
+        texto = texto.replace("X", ".")
+
+        return f"$ {texto}"
+
+    except:
+
+        return "$ 0,00"
 def dashboard(request):
 
     archivo = Path("data/Caja.xlsx")
@@ -19,24 +41,17 @@ def dashboard(request):
     "fecha": hoja["B3"].value,
 
     # Caja UYU
-    "saldo_inicial_uyu": hoja["B4"].value,
-    "movimientos_uyu": hoja["B5"].value,
+    "saldo_inicial_uyu": moneda(hoja["B4"].value),
+    "movimientos_uyu": moneda(hoja["B5"].value),
 
-    # Caja USD
-    "saldo_inicial_usd": hoja["B6"].value,
-    "movimientos_usd": hoja["B7"].value,
+    "mercado_libre": moneda(hoja["B9"].value),
+    "distribucion": moneda(hoja["B10"].value),
+    "total_local": moneda(hoja["B11"].value),
+    "local_efectivo": moneda(hoja["B12"].value),
 
-    # Ventas
-    "mercado_libre": hoja["B9"].value,
-    "distribucion": hoja["B10"].value or 0,
-    "total_local": hoja["B11"].value,
-    "local_efectivo": hoja["B12"].value,
-
-    # Cierre UYU
-    "saldo_final_uyu": hoja["B13"].value,
-    "sobrante_uyu": hoja["B14"].value or 0,
-    "faltante_uyu": hoja["B15"].value or 0,
-
+    "saldo_final_uyu": moneda(hoja["B13"].value),
+    "sobrante_uyu": moneda(hoja["B14"].value),
+    "faltante_uyu": moneda(hoja["B15"].value),
     # Cierre USD
     "saldo_final_usd": hoja["B16"].value,
     "sobrante_usd": hoja["B17"].value or 0,
