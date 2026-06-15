@@ -109,7 +109,7 @@ def asistencias(request):
 
     while hoja[f"A{fila}"].value:
 
-        responsable = hoja[f"B{fila}"].value
+        responsable = hoja[f"B{fila}"].value or "Sin Operador"
 
         registros.append({
 
@@ -119,8 +119,7 @@ def asistencias(request):
 
         })
 
-        if responsable:
-            responsables.append(responsable)
+        responsables.append(responsable)
 
         fila += 1
 
@@ -128,8 +127,29 @@ def asistencias(request):
 
     operador_principal = ""
 
+    dias_operador_principal = 0
+
     if contador:
+
         operador_principal = contador.most_common(1)[0][0]
+
+        dias_operador_principal = contador.most_common(1)[0][1]
+
+    ranking_operadores = []
+
+    max_dias = max(contador.values()) if contador else 1
+
+    for nombre, dias in contador.most_common():
+
+        porcentaje = int((dias / max_dias) * 100)
+
+        ranking_operadores.append({
+
+            "nombre": nombre,
+            "dias": dias,
+            "porcentaje": porcentaje
+
+        })
 
     contexto = {
 
@@ -140,6 +160,10 @@ def asistencias(request):
         "responsables_activos": len(contador),
 
         "operador_principal": operador_principal,
+
+        "dias_operador_principal": dias_operador_principal,
+
+        "ranking_operadores": ranking_operadores,
 
     }
 

@@ -18,6 +18,22 @@
     <h1 class="titulo">
     ASISTENCIAS DE CAJA
 </h1>
+<div class="responsable-premium">
+
+    <div class="hero-titulo">
+        OPERADOR PRINCIPAL DEL MES
+    </div> 
+
+    <div class="responsable-nombre">
+        {{ operador_principal }}
+    </div>
+
+    <div class="responsable-fecha">
+        {{ dias_operador_principal }} días operados
+    </div>
+
+</div>
+
 <div class="kpi-container">
 
     <div class="kpi-card">
@@ -44,6 +60,20 @@
 
     </div>
 
+</div>
+
+    <div class="kpi-card">
+
+        <div class="kpi-titulo">
+            RESPONSABLES ACTIVOS
+        </div>
+
+        <div class="kpi-valor">
+            {{ responsables_activos }}
+        </div>
+
+    </div>
+
     <div class="kpi-card">
 
         <div class="kpi-titulo">
@@ -55,6 +85,72 @@
         </div>
 
     </div>
+<div class="card">
+
+    <h2>Ranking de Operadores</h2>
+
+    {% for operador in ranking_operadores %}
+
+        <div class="ranking-item">
+
+            <span>{{ operador.nombre }}</span>
+
+            <strong>{{ operador.dias }} días</strong>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+<div class="card">
+
+    <h2>Participación Operativa</h2>
+
+    {% for operador in ranking_operadores %}
+
+        <div class="grafico-item">
+
+            <div class="grafico-cabecera">
+
+                <span>{{ operador.nombre }}</span>
+
+                <strong>{{ operador.dias }} días</strong>
+
+            </div>
+
+            <div class="barra-fondo">
+
+                <div
+                    class="barra-progreso"
+                    style="width: {{ operador.porcentaje }}%;">
+                </div>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+<div class="card">
+
+    <h2>Ranking de Operadores</h2>
+
+    {% for operador in ranking_operadores %}
+
+        <div class="ranking-item">
+
+            <span>{{ operador.nombre }}</span>
+
+            <strong>{{ operador.dias }} días</strong>
+
+        </div>
+
+    {% endfor %}
+
+</div>
 
 </div>
     <div class="card">
