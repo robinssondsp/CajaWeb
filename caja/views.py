@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from openpyxl import load_workbook
 from pathlib import Path
-
+from collections import Counter
 
 def moneda(valor):
 
@@ -24,6 +24,7 @@ def moneda(valor):
 
         return "$ 0,00"
 
+
 def moneda_usd(valor):
 
     if valor is None:
@@ -45,7 +46,6 @@ def moneda_usd(valor):
 
         return "USD 0,00"
 
-
 def dashboard(request):
 
     archivo = Path("data/Caja.xlsx")
@@ -59,11 +59,9 @@ def dashboard(request):
 
     contexto = {
 
-        # Responsable
         "operador": hoja["A3"].value,
         "fecha": hoja["B3"].value,
 
-        # KPI Presidenciales
         "total_dia": moneda(hoja["B8"].value),
         "mercado_libre": moneda(hoja["B9"].value),
         "distribucion": moneda(hoja["B10"].value),
@@ -71,25 +69,20 @@ def dashboard(request):
         "local_efectivo": moneda(hoja["B12"].value),
         "saldo_final_uyu": moneda(hoja["B13"].value),
 
-        # Caja UYU
         "saldo_inicial_uyu": moneda(hoja["B4"].value),
         "movimientos_uyu": moneda(hoja["B5"].value),
 
-        # Cierre UYU
         "sobrante_uyu": moneda(hoja["B14"].value),
         "faltante_uyu": moneda(hoja["B15"].value),
 
         "saldo_inicial_usd": moneda_usd(hoja["B6"].value),
         "movimientos_usd": moneda_usd(hoja["B7"].value),
 
-        # Cierre USD
         "saldo_final_usd": moneda_usd(hoja["B16"].value),
         "sobrante_usd": moneda_usd(hoja["B17"].value),
         "faltante_usd": moneda_usd(hoja["B18"].value),
 
-        # Observación
         "observacion": hoja["B19"].value,
-    
     }
 
     return render(
@@ -97,13 +90,6 @@ def dashboard(request):
         "dashboard.html",
         contexto
     )
-def asistencias(request):
-
-    return render(
-        request,
-        "asistencias.html"
-    )
-
 def asistencias(request):
 
     archivo = Path("data/Caja.xlsx")
@@ -119,23 +105,41 @@ def asistencias(request):
 
     fila = 2
 
+    responsables = []
+
     while hoja[f"A{fila}"].value:
+
+        responsable = hoja[f"B{fila}"].value
 
         registros.append({
 
             "fecha": hoja[f"A{fila}"].value,
-
-            "responsable": hoja[f"B{fila}"].value,
-
+            "responsable": responsable,
             "dia": hoja[f"C{fila}"].value,
 
         })
 
+        if responsable:
+            responsables.append(responsable)
+
         fila += 1
+
+    contador = Counter(responsables)
+
+    operador_principal = ""
+
+    if contador:
+        operador_principal = contador.most_common(1)[0][0]
 
     contexto = {
 
-        "registros": registros
+        "registros": registros,
+
+        "dias_operados": len(registros),
+
+        "responsables_activos": len(contador),
+
+        "operador_principal": operador_principal,
 
     }
 

@@ -379,3 +379,41 @@ body {
     box-shadow:
         0 12px 25px rgba(245,158,11,.50);
 }
+
+/* ==========================================
+   TABLA ASISTENCIAS
+========================================== */
+
+.tabla-asistencia {
+
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.tabla-asistencia th {
+
+    background: rgba(255,255,255,.08);
+
+    color: white;
+
+    padding: 15px;
+
+    text-align: left;
+}
+
+.tabla-asistencia td {
+
+    padding: 12px;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+
+    color: white;
+}
+
+.tabla-asistencia tr:hover {
+
+    background:
+        rgba(255,255,255,.05);
+}

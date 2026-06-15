@@ -1,45 +1,107 @@
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="es">
+
+
 
 <head>
     <meta charset="UTF-8">
     <title>Asistencias de Caja</title>
+    <link rel="stylesheet"
+      href="{% static 'css/styles.css' %}">
 </head>
 
 <body>
 
-    <h1>ASISTENCIAS DE CAJA</h1>
+    <h1 class="titulo">
+    ASISTENCIAS DE CAJA
+</h1>
+<div class="kpi-container">
 
-    <table border="1">
+    <div class="kpi-card">
 
-        <tr>
-            <th>Fecha</th>
-            <th>Responsable</th>
-            <th>Día</th>
-        </tr>
+        <div class="kpi-titulo">
+            DÍAS OPERADOS
+        </div>
 
-        {% for fila in registros %}
+        <div class="kpi-valor">
+            {{ dias_operados }}
+        </div>
 
-        <tr>
+    </div>
 
-            <td>
-                {{ fila.fecha|date:"d/m/Y" }}
-            </td>
+    <div class="kpi-card">
 
-            <td>
-                {{ fila.responsable }}
-            </td>
+        <div class="kpi-titulo">
+            RESPONSABLES ACTIVOS
+        </div>
 
-            <td>
-                {{ fila.dia }}
-            </td>
+        <div class="kpi-valor">
+            {{ responsables_activos }}
+        </div>
 
-        </tr>
+    </div>
 
-        {% endfor %}
+    <div class="kpi-card">
+
+        <div class="kpi-titulo">
+            OPERADOR PRINCIPAL
+        </div>
+
+        <div class="kpi-valor">
+            {{ operador_principal }}
+        </div>
+
+    </div>
+
+</div>
+    <div class="card">
+
+    <table class="tabla-asistencia">
+
+        <thead>
+
+            <tr>
+
+                <th>Fecha</th>
+
+                <th>Responsable</th>
+
+                <th>Día</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for fila in registros %}
+
+            <tr>
+
+                <td>
+                    {{ fila.fecha|date:"d/m/Y" }}
+                </td>
+
+                <td>
+                    {{ fila.responsable }}
+                </td>
+
+                <td>
+                    {{ fila.dia }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
 
     </table>
 
+</div>
 </body>
 
 </html>
