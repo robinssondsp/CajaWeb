@@ -12,7 +12,7 @@ def crear_admin(request):
 
         User.objects.create_superuser(
             username="Robinsson",
-            password="TU_CLAVE_AQUI"
+            password="Caja-852456"
         )
 
         return HttpResponse("Administrador creado")
