@@ -21,14 +21,18 @@ def crear_admin(request):
 
 def usuarios(request):
 
-    lista = []
+    texto = ""
 
     for u in User.objects.all():
 
-        lista.append(u.username)
+        texto += f"""
+        Usuario: {u.username}
+        <br>
+        Es superusuario: {u.is_superuser}
+        <br><br>
+        """
 
-    return HttpResponse("<br>".join(lista)) 
-
+    return HttpResponse(texto)
 
 def moneda(valor):
 
