@@ -27,13 +27,17 @@ def usuarios(request):
 
     texto = ""
 
-    for usuario in User.objects.all():
+    usuarios = User.objects.all()
+
+    texto += f"Cantidad de usuarios: {usuarios.count()}<br><br>"
+
+    for usuario in usuarios:
 
         texto += f"""
         Usuario: {usuario.username}<br>
+        Email: {usuario.email}<br>
         Superusuario: {usuario.is_superuser}<br>
-        Staff: {usuario.is_staff}<br>
-        Password Hash: {usuario.password}<br><br>
+        Staff: {usuario.is_staff}<br><br>
         """
 
     return HttpResponse(texto)
