@@ -27,6 +27,20 @@
             CAJAWEB
         </h1>
 
+        {% if form.errors %}
+
+<div class="mensaje-error">
+
+    Usuario o contraseña incorrectos.
+
+    <br><br>
+
+    Inténtelo nuevamente o comuníquese con el área administrativa.
+
+</div>
+
+{% endif %}
+
         <form method="post">
 
             {% csrf_token %}

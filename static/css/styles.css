@@ -537,3 +537,22 @@ body {
 
     transform: translateY(-2px);
 }
+
+.mensaje-error {
+
+    background: rgba(220,38,38,.15);
+
+    border: 1px solid rgba(220,38,38,.5);
+
+    color: #ffffff;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin-bottom: 20px;
+
+    text-align: center;
+
+    font-weight: 700;
+}
