@@ -33,4 +33,10 @@ urlpatterns = [
         name='asistencias'
     ),
 
+    path(
+    'usuarios/',
+    views.usuarios,
+    name='usuarios'
+),
+
 ]

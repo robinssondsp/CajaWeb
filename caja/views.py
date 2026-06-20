@@ -177,3 +177,17 @@ def asistencias(request):
         "asistencias.html",
         contexto
     )
+
+from django.http import HttpResponse
+from django.contrib.auth.models import User
+
+
+def usuarios(request):
+
+    lista = []
+
+    for u in User.objects.all():
+
+        lista.append(u.username)
+
+    return HttpResponse("<br>".join(lista))
