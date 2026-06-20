@@ -25,16 +25,18 @@ def crear_admin(request):
 
 def usuarios(request):
 
-    usuario = User.objects.get(username="Robinsson")
+    texto = ""
 
-    return HttpResponse(
-        f"""
+    for usuario in User.objects.all():
+
+        texto += f"""
         Usuario: {usuario.username}<br>
         Superusuario: {usuario.is_superuser}<br>
         Staff: {usuario.is_staff}<br>
-        Password Hash: {usuario.password}
+        Password Hash: {usuario.password}<br><br>
         """
-    )
+
+    return HttpResponse(texto)
 
 def moneda(valor):
 
