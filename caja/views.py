@@ -8,23 +8,32 @@ from django.contrib.auth.models import User
 
 def crear_admin(request):
 
-    if not User.objects.filter(username="Robinsson").exists():
+    usuario, creado = User.objects.get_or_create(
+        username="Robinsson"
+    )
 
-        User.objects.create_superuser(
-            username="Robinsson",
-            password="Caja-852456"
-        )
+    usuario.is_staff = True
+    usuario.is_superuser = True
 
-        return HttpResponse("Administrador creado")
+    usuario.set_password("Caja-852456")
 
-    return HttpResponse("Administrador ya existe")
+    usuario.save()
+
+    return HttpResponse(
+        "Usuario actualizado correctamente"
+    )
 
 def usuarios(request):
 
-    cantidad = User.objects.count()
+    usuario = User.objects.get(username="Robinsson")
 
     return HttpResponse(
-        f"Cantidad de usuarios: {cantidad}"
+        f"""
+        Usuario: {usuario.username}<br>
+        Superusuario: {usuario.is_superuser}<br>
+        Staff: {usuario.is_staff}<br>
+        Password Hash: {usuario.password}
+        """
     )
 
 def moneda(valor):
