@@ -39,4 +39,10 @@ urlpatterns = [
     name='usuarios'
 ),
 
+path(
+    'crear-admin/',
+    views.crear_admin,
+    name='crear_admin'
+),
+
 ]

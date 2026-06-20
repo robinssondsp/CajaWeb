@@ -6,6 +6,18 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 
+def crear_admin(request):
+
+    if not User.objects.filter(username="Robinsson").exists():
+
+        User.objects.create_superuser(
+            username="Robinsson",
+            password="TU_CLAVE_AQUI"
+        )
+
+        return HttpResponse("Administrador creado")
+
+    return HttpResponse("Administrador ya existe")
 
 def usuarios(request):
 
@@ -15,7 +27,7 @@ def usuarios(request):
 
         lista.append(u.username)
 
-    return HttpResponse("<br>".join(lista))
+    return HttpResponse("<br>".join(lista)) 
 
 
 def moneda(valor):
