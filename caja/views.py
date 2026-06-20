@@ -2,6 +2,8 @@ from django.shortcuts import render
 from openpyxl import load_workbook
 from pathlib import Path
 from collections import Counter
+from django.contrib.auth.decorators import login_required
+
 
 def moneda(valor):
 
@@ -46,6 +48,7 @@ def moneda_usd(valor):
 
         return "USD 0,00"
 
+@login_required
 def dashboard(request):
 
     archivo = Path("data/Caja.xlsx")
@@ -90,6 +93,8 @@ def dashboard(request):
         "dashboard.html",
         contexto
     )
+
+@login_required
 def asistencias(request):
 
     archivo = Path("data/Caja.xlsx")

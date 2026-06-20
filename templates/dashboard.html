@@ -21,6 +21,28 @@
         class="logo"
     >
 
+    <div class="usuario-activo">
+
+    Usuario:
+    <strong>{{ request.user.username }}</strong>
+
+    <form action="{% url 'logout' %}" method="post">
+
+    {% csrf_token %}
+
+    <button
+        type="submit"
+        class="btn-logout">
+
+        CERRAR SESIÓN
+
+    </button>
+
+</form>
+
+</div>
+
+
 </div>
 
 <h1 class="titulo">CONTROL DE CAJA</h1>

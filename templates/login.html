@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Ingreso CajaWeb</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/styles.css' %}">
+
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <img
+            src="{% static 'images/Logo24g.png' %}"
+            class="logo"
+            alt="Logo">
+
+        <h1 class="titulo">
+            CAJAWEB
+        </h1>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button
+                type="submit"
+                class="btn-menu">
+
+                INICIAR SESIÓN
+
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
