@@ -6,6 +6,27 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import render
+from django.contrib.auth import authenticate
+
+def usuarios(request):
+
+    usuario = User.objects.get(username="Robinsson")
+
+    prueba = authenticate(
+        username="Robinsson",
+        password="Caja-852456"
+    )
+
+    return HttpResponse(
+        f"""
+        Usuario: {usuario.username}<br>
+        Superusuario: {usuario.is_superuser}<br>
+        Staff: {usuario.is_staff}<br>
+        Password Hash: {usuario.password}<br><br>
+
+        Authenticate: {prueba}
+        """
+    )
 
 def crear_admin(request):
 
