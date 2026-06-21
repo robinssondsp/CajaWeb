@@ -9,28 +9,24 @@ from django.shortcuts import render
 
 def crear_admin(request):
 
-    try:
+    usuario, creado = User.objects.get_or_create(
+        username="Robinsson"
+    )
 
-        usuario, creado = User.objects.get_or_create(
-            username="Robinsson"
-        )
+    usuario.is_staff = True
+    usuario.is_superuser = True
 
-        usuario.is_staff = True
-        usuario.is_superuser = True
+    usuario.set_password("Caja-852456")
 
-        usuario.set_password("Caja-852456")
+    usuario.save()
 
-        usuario.save()
-
-        return HttpResponse(
-            f"OK - Creado={creado}"
-        )
-
-    except Exception as e:
-
-        return HttpResponse(
-            f"ERROR: {e}"
-        )
+    return HttpResponse(
+        f"""
+        Creado={creado}<br>
+        Usuario={usuario.username}<br>
+        ID={usuario.id}
+        """
+    )
 
 def usuarios(request):
 
@@ -44,7 +40,7 @@ def usuarios(request):
 
         texto += f"""
         Usuario: {usuario.username}<br>
-        Email: {usuario.email}<br>
+        ID: {usuario.id}<br>
         Superusuario: {usuario.is_superuser}<br>
         Staff: {usuario.is_staff}<br><br>
         """
