@@ -9,8 +9,19 @@ from django.shortcuts import render
 
 def crear_admin(request):
 
+    usuario, creado = User.objects.get_or_create(
+        username="Robinsson"
+    )
+
+    usuario.is_staff = True
+    usuario.is_superuser = True
+
+    usuario.set_password("Caja-852456")
+
+    usuario.save()
+
     return HttpResponse(
-        "VERSION FC07721"
+        f"Contraseña actualizada para {usuario.username}"
     )
 
 def usuarios(request):
