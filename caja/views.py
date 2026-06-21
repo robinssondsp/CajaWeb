@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate
 
 from django.contrib.auth import authenticate
 
+
 def usuarios(request):
 
     usuario = User.objects.get(username="Robinsson")
