@@ -33,16 +33,4 @@ urlpatterns = [
         name='asistencias'
     ),
 
-    path(
-    'usuarios/',
-    views.usuarios,
-    name='usuarios'
-),
-
-path(
-    'crear-admin/',
-    views.crear_admin,
-    name='crear_admin'
-),
-
 ]

@@ -31,42 +31,6 @@ def usuarios(request):
         """
     )
 
-def crear_admin(request):
-
-    usuario, creado = User.objects.get_or_create(
-        username="Robinsson"
-    )
-
-    usuario.is_staff = True
-    usuario.is_superuser = True
-
-    usuario.set_password("Caja-852456")
-
-    usuario.save()
-
-    return HttpResponse(
-        f"Contraseña actualizada para {usuario.username}"
-    )
-
-def usuarios(request):
-
-    texto = ""
-
-    usuarios = User.objects.all()
-
-    texto += f"Cantidad de usuarios: {usuarios.count()}<br><br>"
-
-    for usuario in usuarios:
-
-        texto += f"""
-        Usuario: {usuario.username}<br>
-        ID: {usuario.id}<br>
-        Superusuario: {usuario.is_superuser}<br>
-        Staff: {usuario.is_staff}<br><br>
-        """
-
-    return HttpResponse(texto)
-
 def moneda(valor):
 
     if valor is None:
