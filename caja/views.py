@@ -5,23 +5,32 @@ from collections import Counter
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.shortcuts import render
 
 def crear_admin(request):
 
-    usuario, creado = User.objects.get_or_create(
-        username="Robinsson"
-    )
+    try:
 
-    usuario.is_staff = True
-    usuario.is_superuser = True
+        usuario, creado = User.objects.get_or_create(
+            username="Robinsson"
+        )
 
-    usuario.set_password("Caja-852456")
+        usuario.is_staff = True
+        usuario.is_superuser = True
 
-    usuario.save()
+        usuario.set_password("Caja-852456")
 
-    return HttpResponse(
-        "Usuario actualizado correctamente"
-    )
+        usuario.save()
+
+        return HttpResponse(
+            f"OK - Creado={creado}"
+        )
+
+    except Exception as e:
+
+        return HttpResponse(
+            f"ERROR: {e}"
+        )
 
 def usuarios(request):
 
