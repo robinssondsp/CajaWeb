@@ -21,11 +21,7 @@ def crear_admin(request):
     usuario.save()
 
     return HttpResponse(
-        f"""
-        Creado={creado}<br>
-        Usuario={usuario.username}<br>
-        ID={usuario.id}
-        """
+        f"Contraseña actualizada para {usuario.username}"
     )
 
 def usuarios(request):
